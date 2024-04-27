@@ -1,0 +1,171 @@
+Xshell 7 (Build 0151)
+Copyright (c) 2020 NetSarang Computer, Inc. All rights reserved.
+
+Type `help' to learn how to use Xshell prompt.
+[C:\~]$ 
+
+Connecting to 10.137.144.91:9001...
+Connection established.
+To escape to local shell, press 'Ctrl+Alt+]'.
+
+Last login: Tue Mar 19 11:31:33 2024 from 10.130.86.190
+[s2213925@master ~]$ ls
+all.py  four.py  one.py  three.py  two.py
+[s2213925@master ~]$ vi neon.cpp
+[s2213925@master ~]$ rm neon.cpp
+[s2213925@master ~]$ ls
+all.py  four.py  one.py  three.py  two.py
+[s2213925@master ~]$ vi neon.cpp
+[s2213925@master ~]$ g++ -o new neon.cpp
+[s2213925@master ~]$ ls
+all.py  four.py  neon.cpp  new  one.py  three.py  two.py
+[s2213925@master ~]$ ./new
+Original Matrix:
+2.000000 1.000000 1.000000 
+4.000000 -6.000000 0.000000 
+-2.000000 7.000000 2.000000 
+
+Matrix after Gaussian elimination:
+0.998047 0.499023 0.499023 
+-0.796489 0.999314 -0.198928 
+-5.115404 11.419655 1.001334 
+[s2213925@master ~]$ vi
+[s2213925@master ~]$ ls
+all.py  four.py  neon.cpp  new  one.py  three.py  two.py
+[s2213925@master ~]$ vi simd.cpp
+[s2213925@master ~]$ g++ -o neon neon.cpp
+[s2213925@master ~]$ ./neon
+Original Matrix:
+2.000000 1.000000 1.000000 
+4.000000 -6.000000 0.000000 
+-2.000000 7.000000 2.000000 
+
+Matrix after Gaussian elimination:
+0.998047 0.499023 0.499023 
+-0.796489 0.999314 -0.198928 
+-5.115404 11.419655 1.001334 
+[s2213925@master ~]$ perf stat ./new
+failed to get cpuid string for PMU hisi_sccl1_l3c14
+failed to get cpuid string for PMU hisi_sccl7_l3c23
+failed to get cpuid string for PMU hisi_sccl5_l3c30
+failed to get cpuid string for PMU hisi_sccl3_l3c6
+failed to get cpuid string for PMU hisi_sccl1_l3c15
+failed to get cpuid string for PMU hisi_sccl5_l3c31
+failed to get cpuid string for PMU hisi_sccl7_l3c22
+failed to get cpuid string for PMU hisi_sccl3_l3c7
+Original Matrix:
+2.000000 1.000000 1.000000 
+4.000000 -6.000000 0.000000 
+-2.000000 7.000000 2.000000 
+
+Matrix after Gaussian elimination:
+0.998047 0.499023 0.499023 
+-0.796489 0.999314 -0.198928 
+-5.115404 11.419655 1.001334 
+
+ Performance counter stats for './new':
+
+              0.97 msec task-clock:u              #    0.787 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+                52      page-faults:u             #    0.054 M/sec                  
+         1,074,607      cycles:u                  #    1.111 GHz                    
+         1,017,350      instructions:u            #    0.95  insn per cycle         
+   <not supported>      branches:u                                                  
+             9,386      branch-misses:u                                             
+
+       0.001229480 seconds time elapsed
+
+       0.001278000 seconds user
+       0.000000000 seconds sys
+
+
+[s2213925@master ~]$ perf record ./new
+failed to get cpuid string for PMU hisi_sccl1_l3c14
+failed to get cpuid string for PMU hisi_sccl7_l3c23
+failed to get cpuid string for PMU hisi_sccl5_l3c30
+failed to get cpuid string for PMU hisi_sccl3_l3c6
+failed to get cpuid string for PMU hisi_sccl1_l3c15
+failed to get cpuid string for PMU hisi_sccl5_l3c31
+failed to get cpuid string for PMU hisi_sccl7_l3c22
+failed to get cpuid string for PMU hisi_sccl3_l3c7
+Original Matrix:
+2.000000 1.000000 1.000000 
+4.000000 -6.000000 0.000000 
+-2.000000 7.000000 2.000000 
+
+Matrix after Gaussian elimination:
+0.998047 0.499023 0.499023 
+-0.796489 0.999314 -0.198928 
+-5.115404 11.419655 1.001334 
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.002 MB perf.data (8 samples) ]
+[s2213925@master ~]$ perf report
+[s2213925@master ~]$ 
+
+
+
+
+[s2213925@master lab3]$ g++ -o youhua youhua.cpp
+[s2213925@master lab3]$ ls
+youhua  youhua.cpp
+[s2213925@master lab3]$ ./youhua
+Solution vector x:
+85.19 44.10 -667.53 
+[s2213925@master lab3]$ perf stat ./youhua
+failed to get cpuid string for PMU hisi_sccl1_l3c14
+failed to get cpuid string for PMU hisi_sccl7_l3c23
+failed to get cpuid string for PMU hisi_sccl5_l3c30
+failed to get cpuid string for PMU hisi_sccl3_l3c6
+failed to get cpuid string for PMU hisi_sccl1_l3c15
+failed to get cpuid string for PMU hisi_sccl5_l3c31
+failed to get cpuid string for PMU hisi_sccl7_l3c22
+failed to get cpuid string for PMU hisi_sccl3_l3c7
+Solution vector x:
+85.19 44.10 -667.53 
+
+ Performance counter stats for './youhua':
+
+              0.93 msec task-clock:u              #    0.778 CPUs utilized          
+                 0      context-switches:u        #    0.000 K/sec                  
+                 0      cpu-migrations:u          #    0.000 K/sec                  
+                51      page-faults:u             #    0.055 M/sec                  
+           999,141      cycles:u                  #    1.078 GHz                    
+           981,910      instructions:u            #    0.98  insn per cycle         
+   <not supported>      branches:u                                                  
+             9,152      branch-misses:u                                             
+
+       0.001192360 seconds time elapsed
+
+       0.001239000 seconds user
+       0.000000000 seconds sys
+
+
+[s2213925@master lab3]$ perf record ./youhua
+failed to get cpuid string for PMU hisi_sccl1_l3c14
+failed to get cpuid string for PMU hisi_sccl7_l3c23
+failed to get cpuid string for PMU hisi_sccl5_l3c30
+failed to get cpuid string for PMU hisi_sccl3_l3c6
+failed to get cpuid string for PMU hisi_sccl1_l3c15
+failed to get cpuid string for PMU hisi_sccl5_l3c31
+failed to get cpuid string for PMU hisi_sccl7_l3c22
+failed to get cpuid string for PMU hisi_sccl3_l3c7
+Solution vector x:
+85.19 44.10 -667.53 
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.002 MB perf.data (8 samples) ]
+[s2213925@master lab3]$ perf report
+
+Samples: 8  of event 'cycles:u', Event count (approx.): 617349                              
+Overhead  Command  Shared Object     Symbol                                                 
+  71.99%  youhua   ld-2.17.so        [.] _dl_lookup_symbol_x
+  27.18%  youhua   ld-2.17.so        [.] do_lookup_x
+   0.80%  youhua   ld-2.17.so        [.] dl_main
+   0.02%  youhua   ld-2.17.so        [.] _dl_start
+   0.00%  youhua   ld-2.17.so        [.] _start
+   0.00%  youhua   [unknown]         [k] 0xffff0000100814d8
+
+
+
+
+

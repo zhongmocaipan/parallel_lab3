@@ -1,0 +1,263 @@
+gaussian_elimination(float*, float*):
+        push    rbp
+        mov     rbp, rsp
+        sub     rsp, 40
+        mov     QWORD PTR [rbp-152], rdi
+        mov     QWORD PTR [rbp-160], rsi
+        pxor    xmm0, xmm0
+        movss   DWORD PTR [rbp-68], xmm0
+        movss   xmm0, DWORD PTR [rbp-68]
+        shufps  xmm0, xmm0, 0
+        movaps  XMMWORD PTR [rbp-32], xmm0
+        mov     DWORD PTR [rbp-4], 0
+        jmp     .L3
+.L6:
+        mov     eax, DWORD PTR [rbp-4]
+        cdqe
+        lea     rdx, [0+rax*4]
+        mov     rax, QWORD PTR [rbp-152]
+        add     rax, rdx
+        mov     QWORD PTR [rbp-136], rax
+        mov     rax, QWORD PTR [rbp-136]
+        movups  xmm0, XMMWORD PTR [rax]
+        movaps  XMMWORD PTR [rbp-48], xmm0
+        movaps  xmm0, XMMWORD PTR [rbp-48]
+        movaps  XMMWORD PTR [rbp-112], xmm0
+        movaps  xmm0, XMMWORD PTR [rbp-32]
+        movaps  XMMWORD PTR [rbp-128], xmm0
+        movaps  xmm0, XMMWORD PTR [rbp-112]
+        mulps   xmm0, XMMWORD PTR [rbp-128]
+        movaps  XMMWORD PTR [rbp-64], xmm0
+        mov     eax, DWORD PTR [rbp-4]
+        cdqe
+        lea     rdx, [0+rax*4]
+        mov     rax, QWORD PTR [rbp-152]
+        add     rax, rdx
+        mov     QWORD PTR [rbp-80], rax
+        movaps  xmm0, XMMWORD PTR [rbp-64]
+        movaps  XMMWORD PTR [rbp-96], xmm0
+        movaps  xmm0, XMMWORD PTR [rbp-96]
+        mov     rax, QWORD PTR [rbp-80]
+        movups  XMMWORD PTR [rax], xmm0
+        nop
+        add     DWORD PTR [rbp-4], 4
+.L3:
+        cmp     DWORD PTR [rbp-4], 15
+        jle     .L6
+        mov     DWORD PTR [rbp-8], 0
+        jmp     .L7
+.L8:
+        mov     eax, DWORD PTR [rbp-8]
+        cdqe
+        lea     rdx, [0+rax*4]
+        mov     rax, QWORD PTR [rbp-160]
+        add     rax, rdx
+        movss   xmm1, DWORD PTR [rax]
+        mov     eax, DWORD PTR [rbp-8]
+        cdqe
+        lea     rdx, [0+rax*4]
+        mov     rax, QWORD PTR [rbp-160]
+        add     rax, rdx
+        pxor    xmm0, xmm0
+        mulss   xmm0, xmm1
+        movss   DWORD PTR [rax], xmm0
+        add     DWORD PTR [rbp-8], 1
+.L7:
+        cmp     DWORD PTR [rbp-8], 15
+        jle     .L8
+        nop
+        nop
+        leave
+        ret
+.LC12:
+        .string "Original matrix A:"
+.LC13:
+        .string "%.2f "
+.LC14:
+        .string "Original vector b:"
+.LC15:
+        .string "Modified matrix A:"
+.LC16:
+        .string "Modified vector b:"
+main:
+        push    rbp
+        mov     rbp, rsp
+        sub     rsp, 144
+        movss   xmm0, DWORD PTR .LC1[rip]
+        movss   DWORD PTR [rbp-80], xmm0
+        movss   xmm0, DWORD PTR .LC2[rip]
+        movss   DWORD PTR [rbp-76], xmm0
+        movss   xmm0, DWORD PTR .LC3[rip]
+        movss   DWORD PTR [rbp-72], xmm0
+        movss   xmm0, DWORD PTR .LC4[rip]
+        movss   DWORD PTR [rbp-68], xmm0
+        movss   xmm0, DWORD PTR .LC2[rip]
+        movss   DWORD PTR [rbp-64], xmm0
+        movss   xmm0, DWORD PTR .LC4[rip]
+        movss   DWORD PTR [rbp-60], xmm0
+        pxor    xmm0, xmm0
+        movss   DWORD PTR [rbp-56], xmm0
+        movss   xmm0, DWORD PTR .LC2[rip]
+        movss   DWORD PTR [rbp-52], xmm0
+        pxor    xmm0, xmm0
+        movss   DWORD PTR [rbp-48], xmm0
+        movss   xmm0, DWORD PTR .LC5[rip]
+        movss   DWORD PTR [rbp-44], xmm0
+        movss   xmm0, DWORD PTR .LC6[rip]
+        movss   DWORD PTR [rbp-40], xmm0
+        movss   xmm0, DWORD PTR .LC2[rip]
+        movss   DWORD PTR [rbp-36], xmm0
+        movss   xmm0, DWORD PTR .LC7[rip]
+        movss   DWORD PTR [rbp-32], xmm0
+        movss   xmm0, DWORD PTR .LC2[rip]
+        movss   DWORD PTR [rbp-28], xmm0
+        movss   xmm0, DWORD PTR .LC4[rip]
+        movss   DWORD PTR [rbp-24], xmm0
+        movss   xmm0, DWORD PTR .LC5[rip]
+        movss   DWORD PTR [rbp-20], xmm0
+        movss   xmm0, DWORD PTR .LC8[rip]
+        movss   DWORD PTR [rbp-144], xmm0
+        movss   xmm0, DWORD PTR .LC9[rip]
+        movss   DWORD PTR [rbp-140], xmm0
+        movss   xmm0, DWORD PTR .LC10[rip]
+        movss   DWORD PTR [rbp-136], xmm0
+        movss   xmm0, DWORD PTR .LC11[rip]
+        movss   DWORD PTR [rbp-132], xmm0
+        movss   xmm0, DWORD PTR .LC8[rip]
+        movss   DWORD PTR [rbp-128], xmm0
+        movss   xmm0, DWORD PTR .LC9[rip]
+        movss   DWORD PTR [rbp-124], xmm0
+        movss   xmm0, DWORD PTR .LC10[rip]
+        movss   DWORD PTR [rbp-120], xmm0
+        movss   xmm0, DWORD PTR .LC11[rip]
+        movss   DWORD PTR [rbp-116], xmm0
+        movss   xmm0, DWORD PTR .LC8[rip]
+        movss   DWORD PTR [rbp-112], xmm0
+        movss   xmm0, DWORD PTR .LC9[rip]
+        movss   DWORD PTR [rbp-108], xmm0
+        movss   xmm0, DWORD PTR .LC10[rip]
+        movss   DWORD PTR [rbp-104], xmm0
+        movss   xmm0, DWORD PTR .LC11[rip]
+        movss   DWORD PTR [rbp-100], xmm0
+        movss   xmm0, DWORD PTR .LC8[rip]
+        movss   DWORD PTR [rbp-96], xmm0
+        movss   xmm0, DWORD PTR .LC9[rip]
+        movss   DWORD PTR [rbp-92], xmm0
+        movss   xmm0, DWORD PTR .LC10[rip]
+        movss   DWORD PTR [rbp-88], xmm0
+        movss   xmm0, DWORD PTR .LC11[rip]
+        movss   DWORD PTR [rbp-84], xmm0
+        mov     edi, OFFSET FLAT:.LC12
+        call    puts
+        mov     DWORD PTR [rbp-4], 0
+        jmp     .L10
+.L11:
+        mov     eax, DWORD PTR [rbp-4]
+        cdqe
+        movss   xmm0, DWORD PTR [rbp-80+rax*4]
+        pxor    xmm1, xmm1
+        cvtss2sd        xmm1, xmm0
+        movq    rax, xmm1
+        movq    xmm0, rax
+        mov     edi, OFFSET FLAT:.LC13
+        mov     eax, 1
+        call    printf
+        add     DWORD PTR [rbp-4], 1
+.L10:
+        cmp     DWORD PTR [rbp-4], 15
+        jle     .L11
+        mov     edi, 10
+        call    putchar
+        mov     edi, OFFSET FLAT:.LC14
+        call    puts
+        mov     DWORD PTR [rbp-8], 0
+        jmp     .L12
+.L13:
+        mov     eax, DWORD PTR [rbp-8]
+        cdqe
+        movss   xmm0, DWORD PTR [rbp-144+rax*4]
+        pxor    xmm2, xmm2
+        cvtss2sd        xmm2, xmm0
+        movq    rax, xmm2
+        movq    xmm0, rax
+        mov     edi, OFFSET FLAT:.LC13
+        mov     eax, 1
+        call    printf
+        add     DWORD PTR [rbp-8], 1
+.L12:
+        cmp     DWORD PTR [rbp-8], 15
+        jle     .L13
+        mov     edi, 10
+        call    putchar
+        lea     rdx, [rbp-144]
+        lea     rax, [rbp-80]
+        mov     rsi, rdx
+        mov     rdi, rax
+        call    gaussian_elimination(float*, float*)
+        mov     edi, OFFSET FLAT:.LC15
+        call    puts
+        mov     DWORD PTR [rbp-12], 0
+        jmp     .L14
+.L15:
+        mov     eax, DWORD PTR [rbp-12]
+        cdqe
+        movss   xmm0, DWORD PTR [rbp-80+rax*4]
+        pxor    xmm3, xmm3
+        cvtss2sd        xmm3, xmm0
+        movq    rax, xmm3
+        movq    xmm0, rax
+        mov     edi, OFFSET FLAT:.LC13
+        mov     eax, 1
+        call    printf
+        add     DWORD PTR [rbp-12], 1
+.L14:
+        cmp     DWORD PTR [rbp-12], 15
+        jle     .L15
+        mov     edi, 10
+        call    putchar
+        mov     edi, OFFSET FLAT:.LC16
+        call    puts
+        mov     DWORD PTR [rbp-16], 0
+        jmp     .L16
+.L17:
+        mov     eax, DWORD PTR [rbp-16]
+        cdqe
+        movss   xmm0, DWORD PTR [rbp-144+rax*4]
+        pxor    xmm4, xmm4
+        cvtss2sd        xmm4, xmm0
+        movq    rax, xmm4
+        movq    xmm0, rax
+        mov     edi, OFFSET FLAT:.LC13
+        mov     eax, 1
+        call    printf
+        add     DWORD PTR [rbp-16], 1
+.L16:
+        cmp     DWORD PTR [rbp-16], 15
+        jle     .L17
+        mov     edi, 10
+        call    putchar
+        mov     eax, 0
+        leave
+        ret
+.LC1:
+        .long   1082130432
+.LC2:
+        .long   1065353216
+.LC3:
+        .long   -1073741824
+.LC4:
+        .long   1073741824
+.LC5:
+        .long   1077936128
+.LC6:
+        .long   -1069547520
+.LC7:
+        .long   1084227584
+.LC8:
+        .long   1088421888
+.LC9:
+        .long   1090519040
+.LC10:
+        .long   1091567616
+.LC11:
+        .long   1092616192
